@@ -9,7 +9,10 @@ import 'main.dart';
 
 //import 'package:restaurantpickerandroid/loginpage.dart';
 class Main2 extends StatefulWidget {
-  Main2({Key? key}) : super(key: key);
+
+  List<CameraDescription> cameras;
+
+  Main2({Key? key, required this.cameras,}) : super(key: key);
 
   @override
   _Main2State createState() => _Main2State();
@@ -41,7 +44,7 @@ class _Main2State extends State<Main2> {
     pages = [
       HomePage(),
       BrailleHome(),
-      //ASLHome(),
+      ASLHome(cameras: widget.cameras,),
       Settings(),
     ];
   }
@@ -49,46 +52,48 @@ class _Main2State extends State<Main2> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: IndexedStack(
-        index: _selected,
-        children: pages,
-      ),
-      bottomNavigationBar: Container(
-        color: const Color.fromARGB(255, 17, 17, 17),
-        child: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 10),
-          child: GNav(
-            backgroundColor: const Color.fromARGB(255, 17, 17, 17),
-            color: Colors.white,
-            activeColor: Colors.teal[100],
-            tabBackgroundColor: Colors.teal.shade900,
-            padding: const EdgeInsets.all(16),
-            gap: 10,
-            selectedIndex: _selected,
-            onTabChange: (index) {
-              _navigate(index);
-            },
-            tabs: const [
-              GButton(
-                icon: Icons.home,
-                text: "Home",
-              ),
-              GButton(
-                icon: Icons.text_format,
-                text: "Braille",
-              ),
-              // GButton(
-              //   icon: Icons.back_hand,
-              //   text: "ASL",
-              // ),
-              GButton(
-                icon: Icons.settings,
-                text: "Settings",
-              ),
-            ],
-          ),
-        ),
-      ),
+
+      body: pages[2],
+      // body: IndexedStack(
+      //   index: _selected,
+      //   children: pages,
+      // ),
+      // bottomNavigationBar: Container(
+      //   color: const Color.fromARGB(255, 17, 17, 17),
+      //   child: Padding(
+      //     padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 10),
+      //     child: GNav(
+      //       backgroundColor: const Color.fromARGB(255, 17, 17, 17),
+      //       color: Colors.white,
+      //       activeColor: Colors.teal[100],
+      //       tabBackgroundColor: Colors.teal.shade900,
+      //       padding: const EdgeInsets.all(16),
+      //       gap: 10,
+      //       selectedIndex: _selected,
+      //       onTabChange: (index) {
+      //         _navigate(index);
+      //       },
+      //       tabs: const [
+      //         GButton(
+      //           icon: Icons.home,
+      //           text: "Home",
+      //         ),
+      //         GButton(
+      //           icon: Icons.text_format,
+      //           text: "Braille",
+      //         ),
+      //         GButton(
+      //           icon: Icons.back_hand,
+      //           text: "ASL",
+      //         ),
+      //         GButton(
+      //           icon: Icons.settings,
+      //           text: "Settings",
+      //         ),
+      //       ],
+      //     ),
+      //   ),
+      // ),
     );
   }
 }

@@ -1,11 +1,19 @@
+import 'package:brailleaslapp/aslhome.dart';
 import 'package:brailleaslapp/braillehome.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:haptic_feedback/haptic_feedback.dart';
 import 'package:brailleaslapp/main2.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:camera/camera.dart';
 
-void main() {
+late List<CameraDescription> _cameras;
+
+Future<void> main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  _cameras = await availableCameras();
+  //_cameras = [];
+  //_cameras.add(0);
   runApp(const MyApp());
 }
 
@@ -21,7 +29,7 @@ class _MyAppState extends State<MyApp> {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      home: Main2(),
+      home: Main2(cameras: _cameras,),
       
       darkTheme: ThemeData(
         brightness: Brightness.dark,
