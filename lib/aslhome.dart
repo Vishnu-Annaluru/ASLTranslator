@@ -4,6 +4,7 @@ import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:camera/camera.dart';
+import 'package:gallery_saver/gallery_saver.dart';
 
 class ASLHome extends StatefulWidget {
   List<CameraDescription> cameras;
@@ -23,21 +24,38 @@ class ASLHomeState extends State<ASLHome> {
   late CameraController controller;
 
   Future pickFromGallery() async {
-    print("method called bro");
-    final image = await ImagePicker().pickImage(source: ImageSource.gallery);
-    if (image == null) return;
-    setState(() {
-      imageFile = File(image.path);
-    });
+
+    
+    // final image = await ImagePicker().pickImage(source: ImageSource.gallery);
+    // if (image == null) return;
+    // setState(() {
+    //   imageFile = File(image.path);
+    // });
   }
 
   Future pickFromCamera() async {
-    print("method called cameara bro");
-    final image = await ImagePicker().pickImage(source: ImageSource.camera);
-    if (image == null) return;
-    setState(() {
-      imageFile = File(image.path);
-    });
+
+    Future<XFile> picture = controller.takePicture();
+    File pictureFile = File((await picture).path);
+    GallerySaver.saveImage(pictureFile.path).then((String path){
+      setState(() {
+        //print("PICTURE SAVED");
+      });
+    } as FutureOr Function(bool? value));
+
+    print("PICTURE SAVED: $pictureFile.path");
+    
+    // controller.takePicture().then((value) {
+    //   print("Picture: " + value.path);
+    //   GallerySaver.saveImage(value.path);
+    //   print("PICTURE SAVED");
+    // });
+
+    // final image = await ImagePicker().pickImage(source: ImageSource.camera);
+    // if (image == null) return;
+    // setState(() {
+    //   imageFile = File(image.path);
+    // });
   }
 
   @override
@@ -50,7 +68,7 @@ class ASLHomeState extends State<ASLHome> {
       }
       setState(() {
         controller.startImageStream((image) {
-          print(image.width.toString() + " " + image.height.toString());
+          //print(image.width.toString() + " " + image.height.toString());
         });
       });
     }).catchError((Object e) {
@@ -108,7 +126,7 @@ class ASLHomeState extends State<ASLHome> {
                       camera = true;
                       gallery = false;
                     });
-                    //pickFromCamera();
+                    pickFromCamera();
                   },
                   icon: Icon(Icons.camera_alt),
                   color: !camera ? Colors.grey : Colors.blue,
@@ -118,7 +136,7 @@ class ASLHomeState extends State<ASLHome> {
             ),
             SizedBox(height: 20),
             Container(
-              width: 350,
+              width: 300,
               height: 500,
               decoration: BoxDecoration(
                 border: Border.all(color: Colors.blue, width: 3),
