@@ -1,10 +1,5 @@
-import 'package:brailleaslapp/aslhome.dart';
-import 'package:brailleaslapp/braillehome.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
-import 'package:haptic_feedback/haptic_feedback.dart';
 import 'package:brailleaslapp/main2.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:camera/camera.dart';
 
 late List<CameraDescription> _cameras;

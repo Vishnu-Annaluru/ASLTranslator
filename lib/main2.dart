@@ -4,15 +4,13 @@ import 'package:brailleaslapp/homepage.dart';
 import 'package:brailleaslapp/settings.dart';
 import 'package:camera/camera.dart';
 import 'package:flutter/material.dart';
-import 'package:google_nav_bar/google_nav_bar.dart';
-import 'main.dart';
 
 //import 'package:restaurantpickerandroid/loginpage.dart';
 class Main2 extends StatefulWidget {
 
   List<CameraDescription> cameras;
 
-  Main2({Key? key, required this.cameras,}) : super(key: key);
+  Main2({super.key, required this.cameras,});
 
   @override
   _Main2State createState() => _Main2State();
@@ -54,46 +52,7 @@ class _Main2State extends State<Main2> {
     return Scaffold(
 
       body: pages[2],
-      // body: IndexedStack(
-      //   index: _selected,
-      //   children: pages,
-      // ),
-      // bottomNavigationBar: Container(
-      //   color: const Color.fromARGB(255, 17, 17, 17),
-      //   child: Padding(
-      //     padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 10),
-      //     child: GNav(
-      //       backgroundColor: const Color.fromARGB(255, 17, 17, 17),
-      //       color: Colors.white,
-      //       activeColor: Colors.teal[100],
-      //       tabBackgroundColor: Colors.teal.shade900,
-      //       padding: const EdgeInsets.all(16),
-      //       gap: 10,
-      //       selectedIndex: _selected,
-      //       onTabChange: (index) {
-      //         _navigate(index);
-      //       },
-      //       tabs: const [
-      //         GButton(
-      //           icon: Icons.home,
-      //           text: "Home",
-      //         ),
-      //         GButton(
-      //           icon: Icons.text_format,
-      //           text: "Braille",
-      //         ),
-      //         GButton(
-      //           icon: Icons.back_hand,
-      //           text: "ASL",
-      //         ),
-      //         GButton(
-      //           icon: Icons.settings,
-      //           text: "Settings",
-      //         ),
-      //       ],
-      //     ),
-      //   ),
-      // ),
+      
     );
   }
 }

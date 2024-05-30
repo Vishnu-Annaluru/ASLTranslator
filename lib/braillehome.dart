@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 class BrailleHome extends StatefulWidget {
-  BrailleHome({Key? key}) : super(key: key);
+  const BrailleHome({super.key});
 
   @override
   _BrailleHomeState createState() => _BrailleHomeState();
