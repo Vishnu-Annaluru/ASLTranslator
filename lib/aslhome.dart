@@ -33,8 +33,6 @@ class ASLHomeState extends State<ASLHome> {
   String text = "Text will be displayed here";
   double fSize = 15;
 
-  String ip = "http://192.168.1.240";
-
   Future<File> fileFromAsset(String path) async {
     final byteData = await rootBundle.load(path);
 
